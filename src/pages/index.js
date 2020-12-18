@@ -3,9 +3,13 @@ import { history } from 'umi';
 import win from 'zero-element/lib/utils/window';
 
 export default function () {
-  if (win.ZEle.indexPage) {
-    history.push(win.ZEle.indexPage);
-  }
+
+  // if (win.ZEle.indexPage) {
+  //   history.push(win.ZEle.indexPage);
+  // }
+
+  
+  history.push('/test');
 
   return (
     <div>

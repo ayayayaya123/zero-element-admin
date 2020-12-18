@@ -22,18 +22,19 @@ createModel({
     queryPerm: async function () {
       if (getToken()) {
         if (!this.permissions || Array.isArray(this.permissions)) {
-          query('/api/adm/users/self/permissions')
-            .then(response => {
-              if (response.status === 200) {
-                const { perms } = response.data.data;
-                this.setPerm(perms);
-              }
-            })
-            .catch(_ => {
-              return sleep(5000).then(_ => {
-                this.clearPerm();
-              })
-            })
+          //获取权限api
+          // query('/api/adm/users/self/permissions')
+          //   .then(response => {
+          //     if (response.status === 200) {
+          //       const { perms } = response.data.data;
+          //       this.setPerm(perms);
+          //     }
+          //   })
+          //   .catch(_ => {
+          //     return sleep(5000).then(_ => {
+          //       this.clearPerm();
+          //     })
+          //   })
         }
       } else {
         sleep(5000).then(_ => {

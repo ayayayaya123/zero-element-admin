@@ -24,6 +24,10 @@ import onPath from '@/listAction/onPath';
 import path from '@/actionItemType/path';
 import tabs from '@/actionItemType/tabs';
 
+//依赖可视化按钮组件
+import ProjectDetail from '@/container/ProjectDetail';
+import EditList from '@/container/EditList';
+
 import vPath from '@/valueType/path';
 
 import { message } from 'antd';
@@ -77,7 +81,7 @@ golbalSet({
 
 
 if (process.env.NODE_ENV === 'development') {
-  // setEndpoint('http://192.168.0.1:8080');
+  // setEndpoint('http://192.168.3.6:8080');
 
   // saveToken({
   //   token: '',
@@ -89,6 +93,11 @@ LayoutSet({
 });
 LASet({
   'onPath': onPath,
+});
+
+CSet({
+  'ProjectDetail': ProjectDetail,
+  'EditList': EditList,
 });
 
 AITSet({

@@ -2,15 +2,18 @@
   "private": true,
   "scripts": {
     "start": "node init.js && umi dev",
-    "build": "node init.js && umi build",
+    "build": "node init.js && umi build && node gen",
     "buildA": "set ANALYZE=1 && umi build",
     "test": "umi test"
   },
   "dependencies": {
     "@ant-design/icons": "^4.2.1",
+    "antd": "^4.6.4",
     "jparticles": "^2.0.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
+    "react-json-view": "^1.19.1",
+    "react-simple-verify": "^1.0.8",
     "zero-element": "^1.0.0"
   },
   "devDependencies": {
