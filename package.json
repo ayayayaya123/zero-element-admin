@@ -1,5 +1,7 @@
 {
-  "private": true,
+  "name": "zero-element-admin",
+  "version": "1.0.0",
+  "description": "",
   "scripts": {
     "start": "node init.js && umi dev",
     "build": "node init.js && umi build && node gen",
