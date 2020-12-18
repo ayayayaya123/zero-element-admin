@@ -47,7 +47,7 @@ export default function PrimaryLayout({
 
   return <Layout>
     {aloneView ? null : (
-      <Header className="header topNav">
+     <Header className="header topNav" style={{display:"none"}}>
         <div className="logo">
           <a href="/">
             星+智能营销云平台
