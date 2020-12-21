@@ -1,11 +1,11 @@
 import React from 'react';
 import DetailsTemplate from '@/components/Details/DetailsTemplate';
-import setting from './config/test-setting';
+import setting from './config/masterResource-setting';
     
 export default () => {
 
   return <DetailsTemplate
-    namespace="test_view"
+    namespace="masterResource_view"
     setting={setting}
     config={setting.viewConfig}
   />

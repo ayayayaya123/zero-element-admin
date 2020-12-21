@@ -42,7 +42,7 @@ module.exports = [
 
   {
     "name": "测试页面",
-    "path": "/test",
+    "path": "/masterResource",
     "items": [
     ]
   }

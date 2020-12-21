@@ -1,20 +1,21 @@
-const setting = require('./test-setting.json');
+const setting = require('./masterResource-setting.json');
 
 module.exports = {
   layout: setting.layout.form,
-  title: setting.pageName.new,
+  title: setting.pageName.edit,
   items: [
     {
       component: 'Form',
       config: {
         API: {
-          createAPI: setting.createAPI,
+          getAPI: setting.getAPI,
+          updateAPI: setting.updateAPI,
         },
         layout: 'Grid',
         layoutConfig: {
           value: Array(setting.columns).fill(~~(24 / setting.columns)),
         },
-        fields: setting.createFields || setting.formFields,
+        fields: setting.updateFields || setting.formFields,
       },
     },
   ],

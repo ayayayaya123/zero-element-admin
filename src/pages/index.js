@@ -9,7 +9,7 @@ export default function () {
   // }
 
   
-  history.push('/test');
+  history.push('/masterResource');
 
   return (
     <div>

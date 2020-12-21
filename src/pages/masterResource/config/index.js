@@ -1,4 +1,4 @@
-const setting = require('./test-setting.json');
+const setting = require('./masterResource-setting.json');
 
 module.exports = {
   layout: setting.layout.table,

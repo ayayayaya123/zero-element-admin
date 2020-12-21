@@ -224,7 +224,7 @@
       "type": "path",
       "options": {
         "style": "primary",
-        "path": "test/test-add"
+        "path": "masterResource/masterResource-add"
       }
     }
   ],
@@ -234,7 +234,7 @@
       "type": "path",
       "options": {
         "outside": true,
-        "path": "test/test-view"
+        "path": "masterResource/masterResource-view"
       }
     },
     {
@@ -242,7 +242,7 @@
       "type": "path",
       "options": {
         "outside": true,
-        "path": "test/test-edit"
+        "path": "masterResource/masterResource-edit"
       }
     },
     {
