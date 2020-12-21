@@ -10,6 +10,11 @@
   "columns": 1,
   "createFields": [
     {
+      "label": "标签",
+      "type": "input",
+      "field": "orgTag"
+    },
+    {
       "label": "名字",
       "type": "input",
       "field": "name"
@@ -28,10 +33,66 @@
       ],
       "type": "select",
       "field": "status"
+    },
+    {
+      "label": "编码",
+      "type": "input",
+      "field": "code"
+    },
+    {
+      "label": "标题",
+      "type": "input",
+      "field": "title"
+    },
+    {
+      "label": "开始时间",
+      "type": "date",
+      "field": "startTime"
+    },
+    {
+      "label": "结束时间",
+      "type": "date",
+      "field": "endTime"
+    },
+    {
+      "label": "更新时间",
+      "type": "date",
+      "field": "updateTime"
+    },
+    {
+      "label": "关闭时间",
+      "type": "date",
+      "field": "closedTime"
+    },
+    {
+      "label": "过期时间",
+      "type": "date",
+      "field": "expiredTime"
+    },
+    {
+      "label": "指定时间",
+      "type": "date",
+      "field": "appointedTime"
+    },
+    {
+      "label": "描述",
+      "type": "input",
+      "field": "description"
+    },
+    {
+      "label": "备注",
+      "type": "input",
+      "field": "note",
+      "span": 24
     }
   ],
   "updateFields": [
     {
+      "label": "标签",
+      "type": "input",
+      "field": "orgTag"
+    },
+    {
       "label": "名字",
       "type": "input",
       "field": "name"
@@ -50,6 +111,57 @@
       ],
       "type": "select",
       "field": "status"
+    },
+    {
+      "label": "编码",
+      "type": "input",
+      "field": "code"
+    },
+    {
+      "label": "标题",
+      "type": "input",
+      "field": "title"
+    },
+    {
+      "label": "开始时间",
+      "type": "date",
+      "field": "startTime"
+    },
+    {
+      "label": "结束时间",
+      "type": "date",
+      "field": "endTime"
+    },
+    {
+      "label": "更新时间",
+      "type": "date",
+      "field": "updateTime"
+    },
+    {
+      "label": "关闭时间",
+      "type": "date",
+      "field": "closedTime"
+    },
+    {
+      "label": "过期时间",
+      "type": "date",
+      "field": "expiredTime"
+    },
+    {
+      "label": "指定时间",
+      "type": "date",
+      "field": "appointedTime"
+    },
+    {
+      "label": "描述",
+      "type": "input",
+      "field": "description"
+    },
+    {
+      "label": "备注",
+      "type": "input",
+      "field": "note",
+      "span": 24
     }
   ],
   "map": {
@@ -86,6 +198,23 @@
   },
   "tableActions": [
     {
+      "type": "tabs",
+      "options": {
+        "field": "status",
+        "all": true,
+        "tabs": [
+          {
+            "label": "开启",
+            "value": "ORDER_STATUS"
+          },
+          {
+            "label": "关闭",
+            "value": "CLOSE_STATUS"
+          }
+        ]
+      }
+    },
+    {
       "title": "导出",
       "type": "export",
       "options": {}
@@ -107,6 +236,24 @@
         "outside": true,
         "path": "test/test-view"
       }
+    },
+    {
+      "title": "编辑",
+      "type": "path",
+      "options": {
+        "outside": true,
+        "path": "test/test-edit"
+      }
+    },
+    {
+      "title": "删除",
+      "type": "request",
+      "options": {
+        "tips": "确定要删除吗?",
+        "method": "delete",
+        "API": "/api/crud/masterResource/masterResources/(id)",
+        "outside": false
+      }
     }
   ],
   "searchFields": [
@@ -120,6 +267,10 @@
     }
   ],
   "tableFields": [
+    {
+      "label": "标签",
+      "field": "orgTag"
+    },
     {
       "label": "名字",
       "field": "name"
@@ -138,6 +289,95 @@
           "CLOSE_STATUS": "#bdbdbd"
         }
       }
+    },
+    {
+      "label": "创建时间",
+      "field": "createTime"
+    },
+    {
+      "label": "编码",
+      "field": "code"
+    },
+    {
+      "label": "标题",
+      "field": "title"
+    },
+    {
+      "label": "注册时间",
+      "field": "registeredTime"
+    },
+    {
+      "label": "开始时间",
+      "field": "startTime"
+    },
+    {
+      "label": "结束时间",
+      "field": "endTime"
+    },
+    {
+      "label": "更新时间",
+      "field": "updateTime"
+    },
+    {
+      "label": "关闭时间",
+      "field": "closedTime"
+    },
+    {
+      "label": "过期时间",
+      "field": "expiredTime"
+    },
+    {
+      "label": "指定时间",
+      "field": "appointedTime"
+    },
+    {
+      "label": "描述",
+      "field": "description"
+    },
+    {
+      "label": "备注",
+      "field": "note",
+      "valueType": "ellipsis"
     }
-  ]
+  ],
+  "viewConfig": {
+    "left": [
+      {
+        "title": "基本信息",
+        "type": "plain",
+        "fields": [
+          {
+            "label": "orgTag",
+            "field": "orgTag"
+          },
+          {
+            "label": "名字",
+            "field": "name"
+          },
+          {
+            "label": "状态",
+            "field": "status",
+            "options": {
+              "map": {
+                "ORDER_STATUS": "开启",
+                "CLOSE_STATUS": "关闭"
+              }
+            }
+          },
+          {
+            "label": "创建时间",
+            "field": "createTime"
+          },
+          {
+            "label": "编码",
+            "field": "code"
+          },
+          {
+            "label": "标题",
+            "field": "title"
+          }
+        ]
+      }
+    ]
+  }
 }
