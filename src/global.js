@@ -55,6 +55,7 @@ APIConfig({
   'RESPONSE_FIELD_records': 'records',
 });
 golbalSet({
+  tempEndpoint: '', // 开发环境下, 临时切换 pageManage 表单编辑 的 endpoint
   router: (path) => {
     history.push(path);
   },
