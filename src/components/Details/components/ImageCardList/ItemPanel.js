@@ -1,15 +1,14 @@
 import React, { useMemo } from 'react';
 import Panel from '@/components/Panel';
-import { Flex } from 'layout-flex';
 import Item from './Item';
 import { formatAPI } from 'zero-element/lib/utils/format';
-import { formatTableFields } from 'zero-element-antd/lib//container/List/utils/format';
+import { formatTableFields } from '@/../zero-antd-dep/container/List/utils/format';
 import { useModel } from 'zero-element/lib/Model';
-
-const { FlexItem } = Flex;
+import { isNull } from 'util';
+import { Space } from 'antd';
 
 export default function (props) {
-  const { data = {}, map = {}, namespace, operation, format, handle, index, } = props;
+  const { data = {}, map = {}, namespace, operation, format, handle = {}, index, } = props;
 
   const model = useModel(namespace);
   const operationRender = useMemo(_ => {
@@ -23,21 +22,37 @@ export default function (props) {
 
   }, [operation]);
 
+  function getValue(value) {
+    if (value === false) {
+      return null;
+    }
+    return formatAPI(value, {
+      namespace,
+      data,
+      placeholder: '',
+    });
+  }
 
   const beforeData = {
-    title: formatAPI(map.title, { namespace, data }),
-    subTitle: formatAPI(map.subTitle, { namespace, data }),
-    image: formatAPI(map.image, { namespace, data }),
-    imageTitle: formatAPI(map.imageTitle, { namespace, data }),
+    title: getValue(map.title),
+    subTitle: getValue(map.subTitle),
+    image: getValue(map.image),
+    imageTitle: getValue(map.imageTitle),
   };
 
+  const classes = [
+    isNull(beforeData.title) && isNull(beforeData.subTitle) ? 'isNotTitle' : '',
+    isNull(format) && isNull(beforeData.image) && isNull(beforeData.imageTitle) ? 'isNull' : '',
+  ]
+
   return <Panel
+    className={classes.join(' ')}
     collapseIcon={false}
     title={
-      <Flex>
-        <FlexItem>{beforeData.title}</FlexItem>
-        <FlexItem flex={1} className="padding-left weight-400">{beforeData.subTitle}</FlexItem>
-      </Flex>
+      <Space>
+        <div>{beforeData.title}</div>
+        <div className="weight-400">{beforeData.subTitle}</div>
+      </Space>
     }>
     <Item data={beforeData} indexData={{
       text: '',
@@ -46,7 +61,7 @@ export default function (props) {
       type: '',
     }}
       format={format}
-      operation={operationRender('', index, data)}
+      operation={operationRender('', data, index)}
     />
   </Panel>
 }

@@ -5,6 +5,7 @@ import global from 'zero-element/lib/config/global';
 import useDetails from './hooks';
 import { Render } from 'zero-element/lib/config/formItemType';
 import { Render as LayoutRender } from 'zero-element/lib/config/layout';
+import checkExpected from '@/../zero-antd-dep/utils/checkExpected';
 
 import './index.less';
 import _ from 'lodash';
@@ -31,34 +32,44 @@ export default function Details(props) {
       </>
     ) : null}
     <LayoutRender n="Grid" value={Array(col).fill(~~(24 / col))}>
-      {fields.map((option, i) => {
-        const { label } = option;
+      <div className="Details-container">
+        {fields.map((option, i) => {
+          const { label, render } = option;
 
-        return <div key={i} span={option.span} className="Details-item">
-          {label ? (
-            <div className="Details-labelTitle">
-              {label} :
+          if (!checkExpected(data || {}, option.expect || {})) {
+            return null;
+          }
+
+          return <div key={i} span={option.span} className="Details-item">
+            {label ? (
+              <div className="Details-labelTitle">
+                {label} :
             </div>
-          ) : null}
-          {renderPlain(data, option, fieldsMap)}
-        </div>
-      })}
+            ) : null}
+            {render ? render(_.get(data, option.field), data) : renderPlain(data, option, fieldsMap)}
+          </div>
+        })}
+      </div>
     </LayoutRender>
   </Spin>
 }
 
+const typeMap = {
+  group: 'group',
+  image: 'image',
+};
 function renderPlain(data, option, map) {
-  const { field, options, ...rest } = option;
+  const { field, type, options, value, expect, ...rest } = option;
   const optionsObj = { ...options, ...rest };
 
   if (map && map[field]) {
     optionsObj.map = map[field].map;
   }
 
-  return <Render n="plain"
+  return <Render n={typeMap[type] || 'plain'}
     className="Details-valueContainer"
     options={optionsObj}
-    value={_.get(data, field)}
+    value={value || _.get(data, field)}
     formdata={data}
   />
 }

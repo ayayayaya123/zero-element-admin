@@ -10,7 +10,7 @@ export default function TableAction() {
     { title: '页面管理', path: '/pageManage' },
     { title: '列表 actions 编辑' },
   ]);
-console.log('11111222222222333333333')
+
   return <PageHeader
     title="列表 actions 编辑"
     ghost={false}

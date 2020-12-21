@@ -7,6 +7,7 @@ const { FlexItem } = Flex;
 
 export default function Panel({
   title,
+  className,
   defaultCollapse = false,
   collapseIcon = true,
   delayed = false,
@@ -47,7 +48,7 @@ export default function Panel({
     setCollapse(!collapse);
   }
 
-  return <div className="ZEleA-Panel">
+  return <div className={`ZEleA-Panel ${className}`}>
     <Flex className="ZEleA-Panel-title">
       {collapseIcon ? (
         <FlexItem className="ZEleA-Panel-icon" onClick={handleCollapse} style={iconStyle}>

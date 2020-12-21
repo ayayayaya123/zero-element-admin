@@ -34,7 +34,7 @@ export default withRouter(function StepsWrapped(props) {
         API: formatAPI(API, { namespace }),
       })
         .then(data => {
-          if (data.data) {
+          if (data && data.data) {
             setPageData(namespace, 'formData', data.data);
           }
         })

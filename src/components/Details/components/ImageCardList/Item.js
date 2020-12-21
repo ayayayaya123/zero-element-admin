@@ -21,14 +21,14 @@ export default function ({ data, indexData, operation, format }) {
         <div>
           <span className="weight">{data.imageTitle}</span>
         </div>
-        <Render
+        {format ? (<Render
           n="plain"
           data={indexData}
           options={{
             format,
           }}
           handle={{}}
-        />
+        />) : null}
       </div>
     </FlexItem>
     <FlexItem>
