@@ -55,7 +55,7 @@ APIConfig({
   'RESPONSE_FIELD_records': 'records',
 });
 golbalSet({
-  tempEndpoint: '', // 开发环境下, 临时切换 pageManage 表单编辑 的 endpoint
+  tempEndpoint: 'http://192.168.3.121:8080', // 开发环境下, 临时切换 pageManage 表单编辑 的 endpoint
   router: (path) => {
     history.push(path);
   },
@@ -83,7 +83,7 @@ golbalSet({
 
 if (process.env.NODE_ENV === 'development') {
   // setEndpoint('http://192.168.3.6:8080');
-  setEndpoint('http://192.168.3.121:8080');
+  // setEndpoint('http://192.168.3.121:8080');
 
   // saveToken({
   //   token: '',
