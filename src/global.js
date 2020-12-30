@@ -18,17 +18,8 @@ import { set as FITSet } from 'zero-element/lib/config/formItemType';
 import { set as AITSet } from 'zero-element/lib/config/actionItemType';
 import { set as VTSet } from 'zero-element/lib/config/valueType';
 
-
-import onPath from '@/listAction/onPath';
-
-import path from '@/actionItemType/path';
-import tabs from '@/actionItemType/tabs';
-
-import vPath from '@/valueType/path';
-
 import { message } from 'antd';
 
-import Content from '@/../zero-antd-dep/layout/Content';
 
 import './rewrite.less';
 
@@ -83,19 +74,3 @@ if (process.env.NODE_ENV === 'development') {
   //   token: '',
   // });
 }
-
-LayoutSet({
-  Content,
-});
-LASet({
-  'onPath': onPath,
-});
-
-AITSet({
-  path,
-  tabs,
-});
-
-VTSet({
-  'path': vPath,
-});

@@ -1,15 +1,18 @@
 import React from 'react';
-import { history } from 'umi';
-import win from 'zero-element/lib/utils/window';
+import ZEle from 'zero-element';
 
 export default function () {
-  if (win.ZEle.indexPage) {
-    history.push(win.ZEle.indexPage);
-  }
-
   return (
     <div>
       首页
+      <ZEle namespace="global" config={config} />
     </div>
   );
+}
+
+const config = {
+  layout: 'Empty',
+  items: [
+    { component: 'Test' }
+  ]
 }

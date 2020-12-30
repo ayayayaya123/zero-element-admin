@@ -6,9 +6,6 @@ export default {
   // history: {
   //   type: 'hash',
   // },
-  dynamicImport: {
-    loading: '@/framework/Loading'
-  },
   locale: {
     default: 'zh-CN',
     antd: true,
