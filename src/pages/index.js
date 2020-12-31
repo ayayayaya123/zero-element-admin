@@ -1,12 +1,19 @@
 import React from 'react';
 import ZEle from 'zero-element';
 
+import MasterReaource from './masterResource';
+
 export default function () {
-  return (
-    <div>
+
+  /**
+   * <div>
       首页
       <ZEle namespace="global" config={config} />
     </div>
+   */
+
+  return (
+    <MasterReaource/>
   );
 }
 

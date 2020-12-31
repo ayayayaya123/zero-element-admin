@@ -20,6 +20,16 @@ import { set as VTSet } from 'zero-element/lib/config/valueType';
 
 import { message } from 'antd';
 
+import onPath from '@/listAction/onPath';
+
+import path from '@/actionItemType/path';
+import tabs from '@/actionItemType/tabs';
+
+import ProjectDetail from '@/container/ProjectDetail';
+import EditList from '@/container/EditList';
+
+// import DnDPdfEdit from 'zero-element-antd-dpe';
+// import zeroDesign from 'zero-element-plugin-design';
 
 import './rewrite.less';
 
@@ -42,6 +52,7 @@ APIConfig({
   'RESPONSE_FIELD_records': 'records',
 });
 golbalSet({
+  tempEndpoint: '', // 开发环境下, 临时切换 pageManage 的 endpoint
   router: (path) => {
     history.push(path);
   },
@@ -68,9 +79,24 @@ golbalSet({
 
 
 if (process.env.NODE_ENV === 'development') {
-  // setEndpoint('http://192.168.0.1:8080');
 
-  // saveToken({
-  //   token: '',
-  // });
+  setEndpoint('http://192.168.3.236:8888');
+  saveToken({
+    token: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJvcmdJZCI6IjEwMDAwMDAwMDAwMDAwMDAxMCIsInVzZXJJZCI6Ijg3NjcwODA4MjQzNzE5NzgzMCIsInVzZXJUeXBlIjoxMDEsImJVc2VyVHlwZSI6IlNZU1RFTSIsInRlbmFudE9yZ0lkIjoxMDAwMDAwMDAwMDAwMDAwMTAsImFjY291bnQiOiJhZG1pbiIsImV4dHJhVXNlclR5cGUiOjEsImlhdCI6MTYwOTM4NzYwMSwianRpIjoiODc2NzA4MDgyNDM3MTk3ODMwIiwic3ViIjoiYWRtaW4iLCJleHAiOjE2MDk2NDY4MDF9.NR4FM6o-0sjcaMIicCe8-TPIsDojmgGxvfYhLF4BPpTCzyN5D9iQSpJMFHoHqLWQ7UQSGWU6fp_UG5U4S33HAA',
+  });
 }
+
+LASet({
+  'onPath': onPath,
+});
+
+CSet({
+  'ProjectDetail': ProjectDetail,
+  'EditList': EditList,
+  // 'DnDFormEdit': zeroDesign.DnDFormEdit
+});
+
+AITSet({
+  path,
+  tabs,
+});
