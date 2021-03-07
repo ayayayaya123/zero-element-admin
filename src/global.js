@@ -80,7 +80,7 @@ golbalSet({
 
 if (process.env.NODE_ENV === 'development') {
 
-  setEndpoint('http://localhost:8000');
+  setEndpoint('http://localhost:8080');
   saveToken({
     token: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJvcmdJZCI6IjEwMDAwMDAwMDAwMDAwMDAxMCIsInVzZXJJZCI6Ijg3NjcwODA4MjQzNzE5NzgzMCIsInVzZXJUeXBlIjoxMDEsImJVc2VyVHlwZSI6IlNZU1RFTSIsInRlbmFudE9yZ0lkIjoxMDAwMDAwMDAwMDAwMDAwMTAsImFjY291bnQiOiJhZG1pbiIsImV4dHJhVXNlclR5cGUiOjEsImlhdCI6MTYwOTM4NzYwMSwianRpIjoiODc2NzA4MDgyNDM3MTk3ODMwIiwic3ViIjoiYWRtaW4iLCJleHAiOjE2MDk2NDY4MDF9.NR4FM6o-0sjcaMIicCe8-TPIsDojmgGxvfYhLF4BPpTCzyN5D9iQSpJMFHoHqLWQ7UQSGWU6fp_UG5U4S33HAA',
   });
