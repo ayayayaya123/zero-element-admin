@@ -11,7 +11,7 @@ export default () => {
   //   { title: '页面管理', path: '/pageManage' },
   //   { title: '新建表单编辑' },
   // ]);
-  useWillUnmount(switchEndpoint);
+  // useWillUnmount(switchEndpoint);
 
   return <ZEle namespace="gen" config={config} />;
 };

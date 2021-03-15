@@ -6,8 +6,11 @@ import switchEndpoint from '@/components/switchEndpoint';
 export default withRouter(function EditList(props) {
   const { namespace, location } = props;
 
+  console.log('location = ', location)
+
   function handleClick(path) {
     switchEndpoint();
+    console.log('path = ', path)
     handleRoute(path);
   }
   function handleRoute(path) {
