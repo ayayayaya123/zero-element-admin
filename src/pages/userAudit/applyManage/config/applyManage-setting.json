@@ -1,0 +1,117 @@
+{
+  "pageName": {
+    "table": "发起申请",
+    "new": "添加申请",
+    "edit": "编辑申请"
+  },
+  "listAPI": "/api/wf/processes?status=ENABLED",
+  "createAPI": "/api/wf/processes",
+  "getAPI": "/api/wf/processes/[id]",
+  "updateAPI": "/api/wf/processes/[id]",
+  "deleteAPI": "/api/wf/processes/(id)",
+  "columns": 1,
+  "createFields": [
+    {
+      "label": "类别名称",
+      "rules": [
+        {
+          "type": "required"
+        }
+      ],
+      "props": {
+        "placeholder": "请输入"
+      },
+      "type": "input",
+      "field": "name"
+    },
+    {
+      "label": "类别编码",
+      "rules": [
+        {
+          "type": "required"
+        }
+      ],
+      "props": {
+        "placeholder": "请输入"
+      },
+      "type": "input",
+      "field": "code"
+    },
+    {
+      "label": "",
+      "type": "hidden",
+      "field": "identifier"
+    }
+  ],
+  "updateFields": [
+    {
+      "label": "类别名称",
+      "rules": [
+        {
+          "type": "required"
+        }
+      ],
+      "props": {
+        "placeholder": "请输入"
+      },
+      "type": "input",
+      "field": "name"
+    },
+    {
+      "label": "类别编码",
+      "rules": [
+        {
+          "type": "required"
+        }
+      ],
+      "props": {
+        "placeholder": "请输入"
+      },
+      "type": "input",
+      "field": "code"
+    },
+    {
+      "label": "",
+      "type": "hidden",
+      "field": "identifier"
+    }
+  ],
+  "map": {},
+  "layout": {
+    "table": "Content",
+    "form": "TitleContent"
+  },
+  "tableActions": [ ],
+  "tableOperation": [
+    {
+      "title": "发起申请",
+      "type": "path",
+      "options": {
+        "outside": true,
+        "path": "applyManage/applyManage-apply"
+      },
+      "expect": {
+        "permission": "",
+        "field": "status",
+        "value": "ENABLED"
+      }
+    }
+  ],
+  "searchFields": [
+    {
+      "label": "类型",
+      "field": "name",
+      "type": "input",
+      "props": {
+        "placeholder": ""
+      }
+    }
+  ],
+  "tableFields": [
+    {
+      "label": "类型",
+      "width": 200,
+      "field": "name"
+    }
+  ]
+}

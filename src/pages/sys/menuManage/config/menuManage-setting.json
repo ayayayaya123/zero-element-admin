@@ -1,0 +1,368 @@
+{
+  "pageName": {
+    "table": "菜单管理",
+    "new": "添加菜单",
+    "edit": "编辑菜单"
+  },
+  "listAPI": "/api/crud/menu/custom/group",
+  "createAPI": "/api/crud/menu/custom/group",
+  "getAPI": "/api/crud/menu/custom/group/[id]",
+  "updateAPI": "/api/crud/menu/custom/group/[id]",
+  "deleteAPI": "api/crud/menu/menus/(id)",
+  "columns": 1,
+  "createFields": [
+    {
+      "label": "菜单名称",
+      "rules": [
+        {
+          "type": "required"
+        }
+      ],
+      "props": {
+        "placeholder": "请输入"
+      },
+      "type": "input",
+      "field": "name"
+    }
+  ],
+  "updateFields": [
+    {
+      "label": "菜单名称",
+      "rules": [
+        {
+          "type": "required"
+        }
+      ],
+      "props": {
+        "placeholder": "请输入"
+      },
+      "type": "input",
+      "field": "menuName"
+    }
+  ],
+  "map": {},
+  "layout": {
+    "table": "Content",
+    "form": "TitleContent"
+  },
+  "tableActions": [
+    {
+      "title": "添加",
+      "type": "modal",
+      "options": {
+        "style": "primary",
+        "modalTitle": "添加类别",
+        "modalWidth": 600,
+        "items": [
+          {
+            "component": "Form",
+            "config": {
+              "layout": "Grid",
+              "layoutConfig": {
+                "value": [
+                  24
+                ]
+              },
+              "API": {
+                "createAPI": "/api/crud/menu/menus"
+              },
+              "fields": [
+                {
+                  "label": "菜单名称",
+                  "rules": [
+                    {
+                      "type": "required"
+                    }
+                  ],
+                  "props": {
+                    "placeholder": "请输入"
+                  },
+                  "type": "input",
+                  "field": "menuName"
+                },
+                {
+                  "label": "路径",
+                  "rules": [
+                    {
+                      "type": "required"
+                    }
+                  ],
+                  "props": {
+                    "placeholder": "请输入"
+                  },
+                  "type": "input",
+                  "field": "component"
+                },
+                {
+                  "field": "menuType", "label": "菜单类型", "type": "select",
+                  "rules": ["required"],
+                  "options": [
+                    { "label": "目录", "value": "C" },
+                    { "label": "菜单", "value": "M" },
+                    { "label": "按钮", "value": "B" }
+                  ]
+                },
+                {
+                  "label": "选择权限",
+                  "field": "permId",
+                  "span": 24,
+                  "type": "modal-radio",
+                  "props": {},
+                  "rules": [],
+                  "options": {
+                    "title": "选择权限",
+                    "label": "name",
+                    "editLabel": "perm",
+                    "value": "id",
+                    "pagination": true,
+                    "API": "/api/adm/perms/group",
+                    "fields": [
+                      {
+                        "label": "权限名称",
+                        "field": "name",
+                        "valueType": "ellipsis"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "label": "父类别",
+                  "field": "pid",
+                  "span": 24,
+                  "type": "modal-radio",
+                  "props": {},
+                  "rules": [],
+                  "options": {
+                    "title": "选择父类别",
+                    "label": "menuName",
+                    "editLabel": "pName",
+                    "value": "id",
+                    "pagination": true,
+                    "API": "/api/crud/menu/custom/group",
+                    "fields": [
+                      {
+                        "label": "菜单名称",
+                        "field": "menuName",
+                        "valueType": "ellipsis"
+                      },
+                      {
+                        "label": "路径",
+                        "field": "component",
+                        "valueType": "ellipsis"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "label": "排序号",
+                  "rules": [],
+                  "type": "number",
+                  "field": "orderNum"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expect": {
+        "permission": ""
+      }
+    }
+  ],
+  "tableOperation": [
+    {
+      "title": "启用",
+      "type": "request",
+      "options": {
+        "method": "put",
+        "outside": true,
+        "API": ""
+      },
+      "expect": {
+        "field": "status",
+        "value": "1"
+      }
+    },
+    {
+      "title": "禁用",
+      "type": "request",
+      "options": {
+        "method": "put",
+        "outside": true,
+        "API": ""
+      },
+      "expect": {
+        "field": "status",
+        "value": "0"
+      }
+    },
+    {
+      "title": "编辑",
+      "type": "modal",
+      "options": {
+        "modalTitle": "编辑类别",
+        "modalWidth": 600,
+        "outside": true,
+        "items": [
+          {
+            "component": "Form",
+            "config": {
+              "layout": "Grid",
+              "layoutConfig": {
+                "value": [
+                  24
+                ]
+              },
+              "API": {
+                "getAPI": "/api/crud/menu/menus/(id)",
+                "updateAPI": "/api/crud/menu/menus/(id)"
+              },
+              "fields": [
+                {
+                  "label": "菜单名称",
+                  "rules": [
+                    {
+                      "type": "required"
+                    }
+                  ],
+                  "props": {
+                    "placeholder": "请输入"
+                  },
+                  "type": "input",
+                  "field": "menuName"
+                },
+                {
+                  "label": "路径",
+                  "rules": [
+                    {
+                      "type": "required"
+                    }
+                  ],
+                  "props": {
+                    "placeholder": "请输入"
+                  },
+                  "type": "input",
+                  "field": "component"
+                },
+                {
+                  "field": "menuType", "label": "菜单类型", "type": "select",
+                  "rules": ["required"],
+                  "options": [
+                    { "label": "目录", "value": "C" },
+                    { "label": "菜单", "value": "M" },
+                    { "label": "按钮", "value": "B" }
+                  ]
+                },
+                {
+                  "label": "选择权限",
+                  "field": "permId",
+                  "span": 24,
+                  "type": "modal-radio",
+                  "props": {},
+                  "rules": [],
+                  "options": {
+                    "title": "选择权限",
+                    "label": "name",
+                    "editLabel": "perm",
+                    "value": "id",
+                    "pagination": true,
+                    "API": "/api/adm/perms/group",
+                    "fields": [
+                      {
+                        "label": "权限名称",
+                        "field": "name",
+                        "valueType": "ellipsis"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "label": "父类别",
+                  "field": "pid",
+                  "span": 24,
+                  "type": "modal-radio",
+                  "props": {},
+                  "rules": [],
+                  "options": {
+                    "title": "选择父类别",
+                    "label": "menuName",
+                    "editLabel": "pName",
+                    "value": "id",
+                    "pagination": true,
+                    "API": "/api/crud/menu/custom/group",
+                    "fields": [
+                      {
+                        "label": "菜单名称",
+                        "field": "menuName",
+                        "valueType": "ellipsis"
+                      },
+                      {
+                        "label": "路径",
+                        "field": "component",
+                        "valueType": "ellipsis"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "label": "排序号",
+                  "rules": [],
+                  "type": "number",
+                  "field": "orderNum"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expect": {
+        "permission": ""
+      }
+    },
+    {
+      "title": "删除",
+      "type": "delete",
+      "options": {
+        "outside": false
+      },
+      "expect": {
+        "permission": ""
+      }
+    }
+  ],
+  "searchFields": [
+    {
+      "label": "菜单名称",
+      "field": "menuName",
+      "type": "input",
+      "props": {
+        "placeholder": ""
+      }
+    }
+  ],
+  "tableFields": [
+    {
+      "label": "菜单名称",
+      "field": "menuName"
+    },
+    {
+      "label": "路径",
+      "field": "component"
+    },
+    {
+      "label": "状态",
+      "field": "status",
+      "valueType": "tag",
+      "options": {
+        "map": {
+          "0": "启用",
+          "1": "禁用"
+        },
+        "color": {
+          "0": "#17d349",
+          "1": "#bdbdbd"
+        }
+      }
+    }
+  ]
+}

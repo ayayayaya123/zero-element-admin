@@ -1,0 +1,219 @@
+{
+  "pageName": {
+    "table": "待办事项",
+    "new": "",
+    "edit": ""
+  },
+  "listAPI": "/api/wf/instances?type=CURRENT",
+  "createAPI": "",
+  "getAPI": "/api/wf/instanceAndForm/byTableJSON/[id]",
+  "updateAPI": "",
+  "deleteAPI": "/api/wf/instances/(id)",
+  "updateApplyAPI": {
+    "approveUrl": "/api/wf/instances/(id)/approve", 
+    "rollbackUrl": "/api/wf/instances/(id)/rollback",
+    "rejectUrl": "/api/wf/instances/(id)/reject"
+  },
+  "getApplyHistoryAPI": "/api/wf/histories",
+  "columns": 1,
+  "createFields": [
+    {
+      "label": "类别名称",
+      "rules": [
+        {
+          "type": "required"
+        }
+      ],
+      "props": {
+        "placeholder": "请输入"
+      },
+      "type": "input",
+      "field": "name"
+    },
+    {
+      "label": "类别编码",
+      "rules": [
+        {
+          "type": "required"
+        }
+      ],
+      "props": {
+        "placeholder": "请输入"
+      },
+      "type": "input",
+      "field": "code"
+    },
+    {
+      "label": "",
+      "type": "hidden",
+      "field": "identifier"
+    }
+  ],
+  "updateFields": [
+    {
+      "label": "类别名称",
+      "rules": [
+        {
+          "type": "required"
+        }
+      ],
+      "props": {
+        "placeholder": "请输入"
+      },
+      "type": "input",
+      "field": "name"
+    },
+    {
+      "label": "类别编码",
+      "rules": [
+        {
+          "type": "required"
+        }
+      ],
+      "props": {
+        "placeholder": "请输入"
+      },
+      "type": "input",
+      "field": "code"
+    },
+    {
+      "label": "",
+      "type": "hidden",
+      "field": "identifier"
+    }
+  ],
+  "map": {},
+  "layout": {
+    "table": "Content",
+    "form": "TitleContent"
+  },
+  "tableActions": [ ],
+  "tableOperation": [
+    {
+      "title": "审核",
+      "type": "path",
+      "options": {
+        "outside": true,
+        "path": "toDoList/toDoList-edit"
+      },
+      "expect": {
+        "permission": "",
+        "field": "status",
+        "value": "/(START|VERIFYING)/"
+      }
+    },
+    {
+      "title": "查看",
+      "type": "path",
+      "options": {
+        "outside": true,
+        "path": "toDoList/toDoList-edit"
+      },
+      "expect": {
+        "permission": ""
+      }
+    },
+    {
+      "title": "撤销申请",
+      "type": "request",
+      "options": {
+        "outside": true,
+        "tips": "确定要撤销申请吗?",
+        "API": "/api/wf/instances/(id)",
+        "method": "delete"
+      },
+      "expect": {
+        "permission": "",
+        "field": "status",
+        "value": "/(START|VERIFYING)/"
+      }
+    }
+  ],
+  "searchFields": [
+    {
+      "label": "流程名称",
+      "field": "name",
+      "type": "input",
+      "props": {
+        "placeholder": "请输入"
+      }
+    },
+    {
+      "field": "status", "label": "申请状态", "type": "select",
+      "options": [
+        { "label": "开始", "value": "START" },
+        { "label": "审核中", "value": "VERIFYING" },
+        { "label": "已拒绝", "value": "CLOSE_REJECTED" },
+        { "label": "已结束", "value": "CLOSE_APPROVED" }
+      ]
+    }
+  ],
+  "tableFields": [
+    {
+      "label": "流程名称",
+      "field": "name"
+    },
+    {
+      "label": "申请人",
+      "field": "creator"
+    },
+    {
+      "label": "审批人",
+      "field": "currentUserName"
+    },
+    {
+      "label": "状态",
+      "field": "status",
+      "valueType": "tag",
+      "options": {
+        "map": {
+          "START": "开始",
+          "VERIFYING": "审核中",
+          "CLOSE_REJECTED": "已拒绝",
+          "CLOSE_APPROVED": "已结束"
+        },
+        "color": {
+          "ENABLED": "#17d349",
+          "VERIFYING": "#DDAF5B",
+          "CLOSE_REJECTED": "#bdbdbd",
+          "CLOSE_APPROVED": "#bdbdbd"
+        }
+      }
+    },
+    {
+      "label": "申请时间",
+      "field": "createTime"
+    }
+  ],
+  "viewConfig": [{
+    "title": "详情",
+    "type": "plain",
+    "fields": [
+      {
+        "label": "微服务名",
+        "field": "service_name",
+        "placeholder": "12345"
+      },
+      {
+        "label": "appid",
+        "field": "项目id"
+      },
+      {
+        "label": "权限",
+        "field": "permission"
+      },
+      {
+        "label": "接口id",
+        "field": "apiid"
+      },
+      {
+        "label": "请求路径",
+        "field": "api_url"
+      },
+      {
+        "label": "请求方式",
+        "field": "api_method"
+      }
+    ]
+  }]
+}

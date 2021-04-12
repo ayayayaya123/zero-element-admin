@@ -1,0 +1,76 @@
+{
+  "pageName": "",
+  "columns": 1,
+  "layout": {
+    "table": "Content",
+    "form": "TitleContent"
+  },
+  "map": {
+    "status": {
+      "map": {
+        "PASS": "使用中",
+        "PENDING_APPROVAL": "待审核",
+        "REFUSE": "已拒绝"
+      }
+    },
+    "comeFrom": {
+      "map": {
+        "0": "系统创建",
+        "1": "用户注册"
+      }
+    }
+  },
+  "tableActions": [
+    {}
+  ],
+  "tableOperation": [
+    {}
+  ],
+  "createFields": [
+    {}
+  ],
+  "updateFields": [],
+  "viewFields": [
+    {}
+  ],
+  "listAPI": "",
+  "createAPI": "",
+  "getAPI": "/api/wf/processes/[id]",
+  "getFieldsAPI": "/api/eav/entities/(id)",
+  "createApplyAPI": "/api/wf/instances/instanceAndForm/(id)",
+  "updateAPI": "",
+  "deleteAPI": "",
+  "searchFields": [
+    {
+      "field": "search",
+      "label": "搜索",
+      "type": "input",
+      "props": {
+        "placeholder": "请输入..."
+      }
+    }
+  ],
+  "tableFields": [
+    {
+      "field": "name",
+      "label": "步骤名称"
+    },
+    {
+      "field": "type",
+      "label": "步骤类型",
+      "valueType": "tag",
+      "options": {
+        "map": {
+          "START": "开始",
+          "MIDDLE": "中间",
+          "END": "结束"
+        },
+        "color": {
+          "START": "#17d349",
+          "MIDDLE": "#DDAF5B",
+          "END": "#D80000"
+        }
+      }
+    }
+  ]
+}

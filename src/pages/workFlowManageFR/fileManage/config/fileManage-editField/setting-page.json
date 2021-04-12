@@ -1,0 +1,183 @@
+{
+  "pageName": "",
+  "columns": 2,
+  "layout": {
+    "table": "Content",
+    "form": "TitleContent"
+  },
+  "map": {
+    "status": {
+      "map": {
+        "PASS": "使用中",
+        "PENDING_APPROVAL": "待审核",
+        "REFUSE": "已拒绝"
+      }
+    },
+    "comeFrom": {
+      "map": {
+        "0": "系统创建",
+        "1": "用户注册"
+      }
+    }
+  },
+  "tableActions": [
+    {
+      "title": "添加",
+      "type": "modal",
+      "options": {
+        "style": "primary",
+        "modalTitle": "添加步骤",
+        "modalWidth": 600,
+        "items": [
+          {
+            "component": "Form",
+            "config": {
+              "layout": "Grid",
+              "layoutConfig": {
+                "value": [
+                  24
+                ]
+              },
+              "API": {
+                "createAPI": "/api/eav/entities/[id]/attributes"
+              },
+              "fields": [
+                {
+                  "label": "标识",
+                  "rules": [
+                    {
+                      "type": "required"
+                    }
+                  ],
+                  "props": {
+                    "placeholder": "请输入"
+                  },
+                  "type": "input",
+                  "field": "fieldName"
+                },
+                {
+                  "label": "字段名",
+                  "rules": [
+                    {
+                      "type": "required"
+                    }
+                  ],
+                  "props": {
+                    "placeholder": "请输入"
+                  },
+                  "type": "input",
+                  "field": "attributeName"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expect": {
+      }
+    }
+  ],
+  "tableOperation": [
+    {
+      "title": "编辑",
+      "type": "modal",
+      "options": {
+        "modalTitle": "编辑步骤",
+        "modalWidth": 600,
+        "outside": true,
+        "items": [
+          {
+            "component": "Form",
+            "config": {
+              "layout": "Grid",
+              "layoutConfig": {
+                "value": [
+                  24
+                ]
+              },
+              "API": {
+                "getAPI": "/api/eav/entities/attributes/(id)",
+                "updateAPI": "/api/eav/attributes/(id)"
+              },
+              "fields": [
+                {
+                  "label": "标识",
+                  "rules": [
+                    {
+                      "type": "required"
+                    }
+                  ],
+                  "props": {
+                    "placeholder": "请输入"
+                  },
+                  "type": "input",
+                  "field": "fieldName"
+                },
+                {
+                  "label": "字段名",
+                  "rules": [
+                    {
+                      "type": "required"
+                    }
+                  ],
+                  "props": {
+                    "placeholder": "请输入"
+                  },
+                  "type": "input",
+                  "field": "attributeName"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expect": {
+        "permission": ""
+      }
+    },
+    {
+      "title": "删除",
+      "type": "request",
+      "options": {
+        "outside": true,
+        "tips": "确定要删除吗?",
+        "API": "/api/eav/attributes/(id)",
+        "method": "delete"
+      }
+    }
+  ],
+  "createFields": [
+    {}
+  ],
+  "updateFields": [
+    {}
+  ],
+  "viewFields": [
+    {}
+  ],
+  "listAPI": "/api/eav/entities/[id]/attributes",
+  "createAPI": "/api/[id]",
+  "getAPI": "/api/(id)",
+  "updateAPI": "/api/(id)",
+  "deleteAPI": "/api/(id)",
+  "searchFields": [
+    {
+      "field": "search",
+      "label": "搜索",
+      "type": "input",
+      "props": {
+        "placeholder": "请输入..."
+      }
+    }
+  ],
+  "tableFields": [
+    {
+      "field": "fieldName",
+      "label": "标识"
+    },
+    {
+      "field": "attributeName",
+      "label": "字段名"
+    }
+  ]
+}

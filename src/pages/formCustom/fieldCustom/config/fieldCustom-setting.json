@@ -1,0 +1,124 @@
+{
+  "pageName": {
+    "table": "自定义字段",
+    "new": "",
+    "edit": ""
+  },
+  "listAPI": "/api/eav/entities?entityType=EXPAND_FORM",
+  "createAPI": "",
+  "getAPI": "/api/eav/entities/[id]",
+  "updateAPI": "/api/[id]",
+  "deleteAPI": "/api/eav/entities/(id)",
+  "columns": 1,
+  "createFields": [
+    {
+      "label": "类别名称",
+      "rules": [
+        {
+          "type": "required"
+        }
+      ],
+      "props": {
+        "placeholder": "请输入"
+      },
+      "type": "input",
+      "field": "name"
+    },
+    {
+      "label": "",
+      "type": "hidden",
+      "field": "identifier"
+    }
+  ],
+  "updateFields": [
+    {
+      "label": "类别名称",
+      "rules": [
+        {
+          "type": "required"
+        }
+      ],
+      "props": {
+        "placeholder": "请输入"
+      },
+      "type": "input",
+      "field": "name"
+    },
+    {
+      "label": "",
+      "type": "hidden",
+      "field": "identifier"
+    }
+  ],
+  "map": {},
+  "layout": {
+    "table": "Content",
+    "form": "TitleContent"
+  },
+  "tableActions": [
+  ],
+  "tableOperation": [
+    {
+      "title": "编辑字段",
+      "type": "path",
+      "options": {
+        "outside": true,
+        "path": "fieldCustom/fieldCustom-editField"
+      }
+    },
+    {
+      "title": "删除",
+      "type": "delete",
+      "options": {
+        "outside": false
+      },
+      "expect": {
+        "permission": ""
+      }
+    }
+  ],
+  "searchFields": [
+    {
+      "label": "表单名字",
+      "field": "name",
+      "type": "input",
+      "props": {
+        "placeholder": ""
+      }
+    }
+  ],
+  "tableFields": [
+    {
+      "label": "表单名字",
+      "field": "name"
+    },
+    {
+      "label": "备注",
+      "field": "note"
+    }
+  ],
+  "viewConfig": [
+    {
+      "title": "详情",
+      "type": "plain",
+      "fields": [
+        {
+          "label": "表单名字",
+          "field": "name"
+        },
+        {
+          "label": "标识",
+          "field": "entityName"
+        },
+        {
+          "label": "表名",
+          "field": "tableName"
+        },
+        {
+          "label": "备注",
+          "field": "note"
+        }
+      ]
+    }
+  ]
+}

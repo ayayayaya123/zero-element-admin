@@ -1,0 +1,86 @@
+@import './theme.less';
+
+// #1890ff
+
+a {
+  color: @ZEle-primary-color;
+
+  &:focus,
+  &:hover {
+    color: @ZEle-primary-color-light;
+  }
+}
+
+.ant-btn-primary {
+  background-color: @ZEle-primary-color;
+  border-color    : @ZEle-primary-color;
+
+  &:focus,
+  &:hover {
+    background-color: @ZEle-primary-color-light;
+    border-color    : @ZEle-primary-color-light;
+  }
+}
+
+.ant-layout-header.header {
+  background: @ZEle-menu-top-bgColor;
+}
+
+/* tab */
+.ant-tabs-ink-bar {
+  background-color: @ZEle-primary-color;
+}
+
+.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: @ZEle-primary-color;
+}
+
+.ant-tabs-tab:focus,
+.ant-tabs-tab:active,
+.ant-tabs-tab:hover,
+.ant-tabs-tab .ant-tabs-tab-btn:focus {
+  color: @ZEle-primary-color-light !important;
+}
+
+.ant-tabs-top>.ant-tabs-nav::before {
+  border-bottom: unset;
+}
+
+.ZEle-action-button.primary {
+  color           : @ZEle-action-primary-fontColor;
+  background-color: @ZEle-action-primary;
+  border-color    : @ZEle-action-primary-fontColor;
+
+  &:focus,
+  &:hover {
+    color           : @ZEle-action-primary-light-fontColor;
+    background-color: @ZEle-action-primary-light;
+    border-color    : @ZEle-action-primary-light-fontColor;
+  }
+}
+
+.ZEle-action-button.secondary {
+  color           : @ZEle-action-secondary-fontColor;
+  background-color: @ZEle-action-secondary;
+  border-color    : @ZEle-action-secondary-fontColor;
+
+  &:focus,
+  &:hover {
+    color           : @ZEle-action-secondary-light-fontColor;
+    background-color: @ZEle-action-secondary-light;
+    border-color    : @ZEle-action-secondary-light-fontColor;
+  }
+}
+
+.ZEle-action-button.default {
+  color           : @ZEle-action-default-fontColor;
+  background-color: @ZEle-action-default;
+  border-color    : @ZEle-action-default-fontColor;
+
+  &:focus,
+  &:hover {
+    color           : @ZEle-action-default-light-fontColor;
+    background-color: @ZEle-action-default-light;
+    border-color    : @ZEle-action-default-light-fontColor;
+  }
+}

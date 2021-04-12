@@ -1,0 +1,42 @@
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+.ant-layout {
+  height: 100%;
+}
+
+header.ant-layout-header {
+  padding: 0 30px;
+}
+
+#root .ant-back-top {
+  right: 20px;
+}
+
+.ant-form .ant-form-item-control-input-content>input,
+.ant-form .ant-select {
+  max-width: 240px;
+}
+
+.ant-select {
+  min-width: 6em;
+}
+
+.ant-typography {
+  word-break: break-all;
+}
+
+.ZEleA-margin-left {
+  margin-left: 12px;
+}
+
+.ZEleA-Breadcrumb-margin.ant-breadcrumb {
+  margin: 12px 0;
+}

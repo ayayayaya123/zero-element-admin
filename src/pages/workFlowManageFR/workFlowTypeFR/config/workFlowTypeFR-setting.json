@@ -1,0 +1,322 @@
+{
+  "pageName": {
+    "table": "流程类别",
+    "new": "添加流程类别",
+    "edit": "编辑流程类别"
+  },
+  "listAPI": "/api/categories/all/tree?identifier=workflow",
+  "createAPI": "/api/categories/all/tree?identifier=workflow",
+  "getAPI": "/api/categories/all/tree?identifier=workflow/[id]",
+  "updateAPI": "/api/categories/all/tree?identifier=workflow/[id]",
+  "deleteAPI": "/api/categories/all/tree?identifier=workflow/(id)",
+  "columns": 1,
+  "createFields": [
+    {
+      "label": "类别名称",
+      "rules": [
+        {
+          "type": "required"
+        }
+      ],
+      "props": {
+        "placeholder": "请输入"
+      },
+      "type": "input",
+      "field": "name"
+    },
+    {
+      "label": "类别编码",
+      "rules": [
+        {
+          "type": "required"
+        }
+      ],
+      "props": {
+        "placeholder": "请输入"
+      },
+      "type": "input",
+      "field": "code"
+    },
+    {
+      "label": "",
+      "type": "hidden",
+      "field": "identifier"
+    }
+  ],
+  "updateFields": [
+    {
+      "label": "类别名称",
+      "rules": [
+        {
+          "type": "required"
+        }
+      ],
+      "props": {
+        "placeholder": "请输入"
+      },
+      "type": "input",
+      "field": "name"
+    },
+    {
+      "label": "类别编码",
+      "rules": [
+        {
+          "type": "required"
+        }
+      ],
+      "props": {
+        "placeholder": "请输入"
+      },
+      "type": "input",
+      "field": "code"
+    },
+    {
+      "label": "",
+      "type": "hidden",
+      "field": "identifier"
+    }
+  ],
+  "map": {},
+  "layout": {
+    "table": "Content",
+    "form": "TitleContent"
+  },
+  "tableActions": [
+    {
+      "title": "添加",
+      "type": "modal",
+      "options": {
+        "style": "primary",
+        "modalTitle": "添加类别",
+        "modalWidth": 600,
+        "items": [
+          {
+            "component": "Form",
+            "config": {
+              "layout": "Grid",
+              "layoutConfig": {
+                "value": [
+                  24
+                ]
+              },
+              "API": {
+                "createAPI": "/api/categories"
+              },
+              "fields": [
+                {
+                  "label": "类别名称",
+                  "rules": [
+                    {
+                      "type": "required"
+                    }
+                  ],
+                  "props": {
+                    "placeholder": "请输入"
+                  },
+                  "type": "input",
+                  "field": "name"
+                },
+                {
+                  "label": "类别编码",
+                  "rules": [
+                    {
+                      "type": "required"
+                    }
+                  ],
+                  "props": {
+                    "placeholder": "请输入"
+                  },
+                  "type": "input",
+                  "field": "code"
+                },
+                {
+                  "label": "父类别",
+                  "field": "pid",
+                  "span": 24,
+                  "type": "modal-radio",
+                  "props": {},
+                  "rules": [],
+                  "options": {
+                    "title": "选择父类别",
+                    "label": "name",
+                    "editLabel": "name",
+                    "value": "id",
+                    "pagination": true,
+                    "API": "/api/categories/all/tree?identifier=workflow",
+                    "fields": [
+                      {
+                        "label": "类别名称",
+                        "field": "name",
+                        "valueType": "ellipsis"
+                      },
+                      {
+                        "label": "备注",
+                        "field": "note",
+                        "valueType": "ellipsis"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "label": "排序号",
+                  "rules": [],
+                  "type": "number",
+                  "field": "sortorder"
+                },
+                {
+                  "label": "",
+                  "type": "hidden",
+                  "field": "identifier",
+                  "value": "workflow"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expect": {
+        "permission": ""
+      }
+    }
+  ],
+  "tableOperation": [
+    {
+      "title": "编辑",
+      "type": "modal",
+      "options": {
+        "modalTitle": "编辑类别",
+        "modalWidth": 600,
+        "outside": true,
+        "items": [
+          {
+            "component": "Form",
+            "config": {
+              "layout": "Grid",
+              "layoutConfig": {
+                "value": [
+                  24
+                ]
+              },
+              "API": {
+                "getAPI": "/api/categories/(id)",
+                "updateAPI": "/api/categories/(id)"
+              },
+              "fields": [
+                {
+                  "label": "类别名称",
+                  "rules": [
+                    {
+                      "type": "required"
+                    }
+                  ],
+                  "props": {
+                    "placeholder": "请输入"
+                  },
+                  "type": "input",
+                  "field": "name"
+                },
+                {
+                  "label": "类别编码",
+                  "rules": [
+                    {
+                      "type": "required"
+                    }
+                  ],
+                  "type": "input",
+                  "field": "code"
+                },
+                {
+                  "label": "父类别",
+                  "field": "pid",
+                  "span": 24,
+                  "type": "modal-radio",
+                  "props": {},
+                  "rules": [],
+                  "options": {
+                    "title": "选择父类别",
+                    "label": "name",
+                    "editLabel": "pName",
+                    "value": "id",
+                    "pagination": true,
+                    "API": "/api/categories/all/tree?identifier=workflow",
+                    "fields": [
+                      {
+                        "label": "类别名称",
+                        "field": "name",
+                        "valueType": "ellipsis"
+                      },
+                      {
+                        "label": "备注",
+                        "field": "note",
+                        "valueType": "ellipsis"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "label": "排序号",
+                  "rules": [],
+                  "type": "number",
+                  "field": "sortorder"
+                },
+                {
+                  "label": "",
+                  "type": "hidden",
+                  "field": "identifier",
+                  "value": "workflow"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expect": {
+        "permission": ""
+      }
+    },
+    {
+      "title": "删除",
+      "type": "delete",
+      "options": {
+        "outside": false
+      },
+      "expect": {
+        "permission": ""
+      }
+    }
+  ],
+  "searchFields": [
+    {
+      "label": "类别名称",
+      "field": "name",
+      "type": "input",
+      "props": {
+        "placeholder": ""
+      }
+    },
+    {
+      "label": "类别编码",
+      "field": "code",
+      "type": "input"
+    }
+  ],
+  "tableFields": [
+    {
+      "label": "类别名称",
+      "field": "name"
+    },
+    {
+      "label": "类别编码",
+      "field": "code"
+    },
+    {
+      "label": "排序号",
+      "field": "sortorder"
+    },
+    {
+      "label": "备注",
+      "width": 180,
+      "field": "note"
+    }
+  ]
+}

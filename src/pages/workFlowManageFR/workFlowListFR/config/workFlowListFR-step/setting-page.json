@@ -1,0 +1,372 @@
+{
+  "pageName": "",
+  "columns": 2,
+  "layout": {
+    "table": "Content",
+    "form": "TitleContent"
+  },
+  "map": {
+    "status": {
+      "map": {
+        "PASS": "使用中",
+        "PENDING_APPROVAL": "待审核",
+        "REFUSE": "已拒绝"
+      }
+    },
+    "comeFrom": {
+      "map": {
+        "0": "系统创建",
+        "1": "用户注册"
+      }
+    }
+  },
+  "tableActions": [
+    {
+      "title": "添加",
+      "type": "modal",
+      "options": {
+        "style": "primary",
+        "modalTitle": "添加步骤",
+        "modalWidth": 600,
+        "items": [
+          {
+            "component": "Form",
+            "config": {
+              "layout": "Grid",
+              "layoutConfig": {
+                "value": [
+                  24
+                ]
+              },
+              "API": {
+                "createAPI": "/api/wf/processes/[id]/steps"
+              },
+              "fields": [
+                {
+                  "label": "步骤名称",
+                  "rules": [
+                    {
+                      "type": "required"
+                    }
+                  ],
+                  "props": {
+                    "placeholder": "请输入"
+                  },
+                  "type": "input",
+                  "field": "name"
+                },
+                {
+                  "label": "步骤类型",
+                  "field": "type",
+                  "rules": [
+                    {
+                      "type": "required"
+                    }
+                  ],
+                  "type": "select",
+                  "options": [
+                    {
+                      "label": "开始",
+                      "value": "START"
+                    },
+                    {
+                      "label": "中间",
+                      "value": "MIDDLE"
+                    },
+                    {
+                      "label": "结束",
+                      "value": "END"
+                    }
+                  ]
+                },
+                {
+                  "label": "下一步骤",
+                  "field": "nextStepString",
+                  "type": "modal-checkbox",
+                  "props": {},
+                  "rules": [],
+                  "options": {
+                    "title": "选择步骤",
+                    "label": "name",
+                    "editLabel": "name",
+                    "value": "id",
+                    "pagination": true,
+                    "API": "/api/wf/processes/[id]/steps/nextStepsByProcessId",
+                    "saveData": {
+                      "masterRelations": "value"
+                    },
+                    "fields": [
+                      {
+                        "label": "名称",
+                        "field": "name"
+                      },
+                      {
+                        "field": "type",
+                        "label": "步骤类型",
+                        "valueType": "tag",
+                        "options": {
+                          "map": {
+                            "START": "开始",
+                            "MIDDLE": "中间",
+                            "END": "结束"
+                          },
+                          "color": {
+                            "START": "#17d349",
+                            "MIDDLE": "#DDAF5B",
+                            "END": "#D80000"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "field": "currentUserId",
+                  "label": "经办人",
+                  "type": "modal-radio",
+                  "props": {},
+                  "rules": [],
+                  "options": {
+                    "title": "选择经办人",
+                    "label": "name",
+                    "editLabel": "currentUserName",
+                    "value": "id",
+                    "pagination": true,
+                    "API": "/api/adm/users",
+                    "fields": [
+                      {
+                        "label": "经办人名字",
+                        "field": "name"
+                      },
+                      {
+                        "label": "联系电话",
+                        "field": "phone"
+                      }
+                    ]
+                  },
+                  "expect": {
+                    "field": "type",
+                    "value": "/(MIDDLE|END)/"
+                  }
+                },
+                {
+                  "label": "",
+                  "type": "hidden",
+                  "field": "identifier",
+                  "value": "workflow"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expect": {
+      }
+    }
+  ],
+  "tableOperation": [
+    {
+      "title": "编辑",
+      "type": "modal",
+      "options": {
+        "modalTitle": "编辑步骤",
+        "modalWidth": 600,
+        "outside": true,
+        "items": [
+          {
+            "component": "Form",
+            "config": {
+              "layout": "Grid",
+              "layoutConfig": {
+                "value": [
+                  24
+                ]
+              },
+              "API": {
+                "getAPI": "/api/wf/processes/steps/(id)",
+                "updateAPI": "/api/wf/processes/steps/(id)"
+              },
+              "fields": [
+                {
+                  "label": "步骤名称",
+                  "rules": [
+                    {
+                      "type": "required"
+                    }
+                  ],
+                  "props": {
+                    "placeholder": "请输入"
+                  },
+                  "type": "input",
+                  "field": "name"
+                },
+                {
+                  "label": "步骤类型",
+                  "field": "type",
+                  "rules": [
+                    {
+                      "type": "required"
+                    }
+                  ],
+                  "type": "select",
+                  "options": [
+                    {
+                      "label": "开始",
+                      "value": "START"
+                    },
+                    {
+                      "label": "中间",
+                      "value": "MIDDLE"
+                    },
+                    {
+                      "label": "结束",
+                      "value": "END"
+                    }
+                  ]
+                },
+                {
+                  "label": "下一步骤",
+                  "field": "nextStepString",
+                  "type": "modal-checkbox",
+                  "options": {
+                    "title": "选择步骤",
+                    "label": "name",
+                    "editLabel": "name",
+                    "value": "id",
+                    "pagination": true,
+                    "API": "/api/wf/processes/[id]/steps/nextStepsByProcessId",
+                    "saveData": {
+                      "masterRelations": "value"
+                    },
+                    "fields": [
+                      {
+                        "label": "名称",
+                        "field": "name"
+                      },
+                      {
+                        "field": "type",
+                        "label": "步骤类型",
+                        "valueType": "tag",
+                        "options": {
+                          "map": {
+                            "START": "开始",
+                            "MIDDLE": "中间",
+                            "END": "结束"
+                          },
+                          "color": {
+                            "START": "#17d349",
+                            "MIDDLE": "#DDAF5B",
+                            "END": "#D80000"
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "expect": {
+                    "field": "type",
+                    "value": "/(MIDDLE|START)/"
+                  }
+                },
+                {
+                  "field": "currentUserId",
+                  "label": "经办人",
+                  "type": "modal-radio",
+                  "props": {},
+                  "rules": [],
+                  "options": {
+                    "title": "选择经办人",
+                    "label": "name",
+                    "editLabel": "currentUserName",
+                    "value": "id",
+                    "pagination": true,
+                    "API": "/api/adm/users",
+                    "fields": [
+                      {
+                        "label": "经办人名字",
+                        "field": "name"
+                      },
+                      {
+                        "label": "联系电话",
+                        "field": "phone"
+                      }
+                    ]
+                  },
+                  "expect": {
+                    "field": "type",
+                    "value": "/(MIDDLE|END)/"
+                  }
+                },
+                {
+                  "label": "",
+                  "type": "hidden",
+                  "field": "identifier",
+                  "value": "workflow"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expect": {
+        "permission": ""
+      }
+    },
+    {
+      "title": "删除",
+      "type": "request",
+      "options": {
+        "outside": true,
+        "tips": "确定要删除吗?",
+        "API": "/api/wf/processes/steps/(id)",
+        "method": "delete"
+      }
+    }
+  ],
+  "createFields": [
+    {}
+  ],
+  "updateFields": [
+    {}
+  ],
+  "viewFields": [
+    {}
+  ],
+  "listAPI": "/api/wf/processes/[id]/steps",
+  "createAPI": "/api/wf/processes/[id]/steps",
+  "getAPI": "/api/wf/processes/steps/(id)",
+  "updateAPI": "/api/wf/processes/steps/(id)",
+  "deleteAPI": "/api/wf/processes/steps/(id)",
+  "searchFields": [
+    {
+      "field": "search",
+      "label": "搜索",
+      "type": "input",
+      "props": {
+        "placeholder": "请输入..."
+      }
+    }
+  ],
+  "tableFields": [
+    {
+      "field": "name",
+      "label": "步骤名称"
+    },
+    {
+      "field": "type",
+      "label": "步骤类型",
+      "valueType": "tag",
+      "options": {
+        "map": {
+          "START": "开始",
+          "MIDDLE": "中间",
+          "END": "结束"
+        },
+        "color": {
+          "START": "#17d349",
+          "MIDDLE": "#DDAF5B",
+          "END": "#D80000"
+        }
+      }
+    }
+  ]
+}

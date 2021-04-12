@@ -1,0 +1,125 @@
+{
+  "pageName": {
+    "table": "数据管理"
+  },
+  "columns": 2,
+  "layout": {
+    "table": "Content",
+    "form": "TitleContent"
+  },
+  "map": {},
+  "tableActions": [
+    {
+      "title": "添加",
+      "type": "modal",
+      "options": {
+        "style": "primary",
+        "modalTitle": "添加",
+        "modalWidth": 600,
+        "items": [
+          {
+            "component": "data_manage_form_add",
+            "config": {
+              "layout": "Grid",
+              "layoutConfig": {
+                "value": [
+                  24
+                ]
+              },
+              "API": {
+                "getAPI": "/api/ali/byTableJSON/(id)",
+                "createAPI": "/api/eav/entities/newValue/(id)"
+              },
+              "fields": [
+              ]
+            }
+          }
+        ]
+      },
+      "expect": {
+      }
+    }
+  ],
+  "tableOperation": [
+    {
+      "title": "编辑",
+      "type": "modal",
+      "options": {
+        "modalTitle": "编辑",
+        "modalWidth": 600,
+        "outside": true,
+        "items": [
+          {
+            "component": "data_manage_form_add",
+            "config": {
+              "layout": "Grid",
+              "layoutConfig": {
+                "value": [
+                  24
+                ]
+              },
+              "API": {
+                "getAPI": "/api/ali/byTableJSON/value/(id)",
+                "updateAPI": "/api/eav/entities/editValue/(id)"
+              },
+              "fields": [
+              ]
+            }
+          }
+        ]
+      },
+      "expect": {
+        "permission": ""
+      }
+    },
+    {
+      "title": "删除",
+      "type": "request",
+      "options": {
+        "outside": true,
+        "tips": "确定要删除吗?",
+        "API": "/api/crud/eav/dataService/(id)",
+        "method": "delete"
+      }
+    }
+  ],
+  "createFields": [
+    {}
+  ],
+  "updateFields": [
+    {}
+  ],
+  "viewFields": [
+    {}
+  ],
+  "listAPI": "/api/crud/eav/dataService/[id]",
+  "createAPI": "/api/[id]",
+  "getAPI": "/api/crud/eav/dataService/detail/(id)",
+  "updateAPI": "/api/(id)",
+  "deleteAPI": "/api/(id)",
+  "searchFields": [
+    {
+      "field": "search",
+      "label": "搜索",
+      "type": "input",
+      "props": {
+        "placeholder": "请输入..."
+      }
+    }
+  ],
+  "tableFields": [
+    
+  ],
+  "viewConfig": [
+    {
+      "title": "详情",
+      "type": "plain",
+      "fields": [
+        {
+          "label": "名字",
+          "field": "name"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,134 @@
+{
+  "pageName": {
+    "table": "自定义字段",
+    "new": "",
+    "edit": ""
+  },
+  "listAPI": "/api/crud/test/tests",
+  "createAPI": "/api/crud/test/tests",
+  "getAPI": "/api/crud/test/tests/[id]",
+  "updateAPI": "/api/crud/test/tests/[id]",
+  "deleteAPI": "/api/crud/test/tests/(id)",
+  "columns": 1,
+  "createFields": [
+    {
+      "label": "名字",
+      "rules": [
+        {
+          "type": "required"
+        }
+      ],
+      "props": {
+        "placeholder": "请输入"
+      },
+      "type": "input",
+      "field": "name"
+    }
+  ],
+  "updateFields": [
+    {
+      "label": "名字",
+      "rules": [
+        {
+          "type": "required"
+        }
+      ],
+      "props": {
+        "placeholder": "请输入"
+      },
+      "type": "input",
+      "field": "name"
+    }
+  ],
+  "map": {},
+  "layout": {
+    "table": "Content",
+    "form": "TitleContent"
+  },
+  "tableActions": [
+    {
+      "title": "添加",
+      "type": "path",
+      "options": {
+        "outside": true,
+        "style": "primary",
+        "path": "testField/testField-add"
+      },
+      "expect": {
+        "permission": ""
+      }
+    }
+  ],
+  "tableOperation": [
+    {
+      "title": "查看详情",
+      "type": "path",
+      "options": {
+        "outside": true,
+        "path": "testField/testField-view"
+      }
+    },
+    {
+      "title": "编辑",
+      "type": "path",
+      "options": {
+        "outside": true,
+        "path": "testField/testField-edit"
+      }
+    },
+    {
+      "title": "删除",
+      "type": "delete",
+      "options": {
+        "outside": false
+      },
+      "expect": {
+        "permission": ""
+      }
+    }
+  ],
+  "searchFields": [
+    {
+      "label": "名字",
+      "field": "name",
+      "type": "input",
+      "props": {
+        "placeholder": ""
+      }
+    }
+  ],
+  "tableFields": [
+    {
+      "label": "标识",
+      "field": "id"
+    },
+    {
+      "label": "名字",
+      "field": "name"
+    }
+  ],
+  "viewConfig": [
+    {
+      "title": "详情",
+      "type": "plain",
+      "fields": [
+        {
+          "label": "名字",
+          "field": "name"
+        },
+        {
+          "label": "标识",
+          "field": "entityName"
+        },
+        {
+          "label": "表名",
+          "field": "tableName"
+        },
+        {
+          "label": "备注",
+          "field": "note"
+        }
+      ]
+    }
+  ]
+}

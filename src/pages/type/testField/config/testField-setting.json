@@ -1,0 +1,184 @@
+{
+  "pageName": {
+    "table": "综合分类管理",
+    "new": "",
+    "edit": ""
+  },
+  "listAPI": "/api/category/categories/all/tree",
+  "createAPI": "/api/category/categories",
+  "getAPI": "/api/category/categories/[id]",
+  "updateAPI": "/api/category/categories/[id]",
+  "deleteAPI": "/api/category/categories/(id)",
+  "columns": 1,
+  "createFields": [
+    {
+      "label": "类型名称",
+      "rules": [
+        {
+          "type": "required"
+        }
+      ],
+      "props": {
+        "placeholder": "请输入"
+      },
+      "type": "input",
+      "field": "name"
+    },
+	{
+            "label": "选择父级",
+            "field": "pid",
+            "type": "modal-radio",
+            "props": {},
+            "rules": [],
+            "options": {
+              "title": "父级",
+              "value": "id",
+              "API": "/api/category/categories/all/tree",
+              "fields": [
+                {
+                  "label": "选择父级",
+                  "field": "name"
+                }
+              ]
+            }
+      },
+	  {
+      "label": "类型编码",
+      "props": {
+        "placeholder": "请输入"
+      },
+      "type": "input",
+      "field": "code"
+    }
+	  
+  ],
+  "updateFields": [
+    {
+      "label": "类型名称",
+      "rules": [
+        {
+          "type": "required"
+        }
+      ],
+      "props": {
+        "placeholder": "请输入"
+      },
+      "type": "input",
+      "field": "name"
+    },
+		{
+            "label": "选择父级",
+            "field": "pid",
+            "type": "modal-radio",
+            "props": {},
+            "rules": [],
+            "options": {
+              "title": "父级",
+              "value": "id",
+              "API": "/api/category/categories/all/tree",
+              "fields": [
+                {
+                  "label": "选择父级",
+                  "field": "name"
+                }
+              ]
+            }
+      },
+	  {
+      "label": "类型编码",
+      "props": {
+        "placeholder": "请输入"
+      },
+      "type": "input",
+      "field": "code"
+    }
+	  
+  ],
+  "map": {},
+  "layout": {
+    "table": "Content",
+    "form": "TitleContent"
+  },
+  "tableActions": [
+    {
+      "title": "添加",
+      "type": "path",
+      "options": {
+        "outside": true,
+        "style": "primary",
+        "path": "testField/testField-add"
+      },
+      "expect": {
+        "permission": ""
+      }
+    }
+  ],
+  "tableOperation": [
+    {
+      "title": "详情",
+      "type": "path",
+      "options": {
+      "outside": true,
+      "path": "testField/testField-view"
+      }
+    },
+    {
+      "title": "编辑",
+      "type": "path",
+      "options": {
+        "outside": true,
+        "path": "testField/testField-edit"
+      }
+    },
+    {
+      "title": "删除",
+      "type": "delete",
+      "options": {
+        "outside": false
+      },
+      "expect": {
+        "permission": ""
+      }
+    }
+  ],
+  "searchFields": [
+    {
+      "label": "名字",
+      "field": "name",
+      "type": "input",
+      "props": {
+        "placeholder": "请输入名称"
+      }
+    }
+  ],
+  "tableFields": [
+    {
+      "label": "分组名称",
+      "field": "name"
+    },
+	{
+      "label": "编码",
+      "field": "code"
+    }
+  ],
+  "viewConfig": [
+    {
+      "title": "详情",
+      "type": "plain",
+      "fields": [
+        {
+          "label": "名字",
+          "field": "name"
+        },
+        {
+          "label": "编码",
+          "field": "code"
+        },
+        {
+          "label": "封面",
+          "field": "cover"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,268 @@
+{
+  "pageName": {
+    "table": "文件管理",
+    "new": "",
+    "edit": ""
+  },
+  "listAPI": "/api/doc",
+  "createAPI": "/api/doc",
+  "getAPI": "/api/doc/[id]",
+  "updateAPI": "/api/doc/[id]",
+  "deleteAPI": "/api/doc/(id)",
+  "columns": 1,
+  "createFields": [
+    {
+      "label": "文档名",
+      "rules": [
+        {
+          "type": "required"
+        }
+      ],
+      "props": {
+        "placeholder": "请输入"
+      },
+      "type": "input",
+      "field": "name"
+    },
+    {
+      "label": "文档编号",
+      "rules": [
+        {
+          "type": "required"
+        }
+      ],
+      "props": {
+        "placeholder": "请输入"
+      },
+      "type": "input",
+      "field": "code"
+    },
+    {
+      "label": "描述",
+      "rules": [],
+      "props": {
+        "placeholder": "请输入"
+      },
+      "type": "input",
+      "field": "desc"
+    },
+    {
+      "label": "备注",
+      "rules": [],
+      "props": {
+        "placeholder": "请输入"
+      },
+      "type": "input",
+      "field": "note"
+    },
+    {
+      "label": "上传文件",
+      "rules": [
+        {
+          "type": "required"
+        }
+      ],
+      "field": "url",
+      "span": 8,
+      "type": "upload_file_single",
+      "options": {
+        "title": "点击上传",
+        "type": "string",
+        "API": "/api/fs/uploadfile"
+      },
+      "expect": {}
+    }
+  ],
+  "updateFields": [
+    {
+      "label": "文档名",
+      "rules": [
+        {
+          "type": "required"
+        }
+      ],
+      "props": {
+        "placeholder": "请输入"
+      },
+      "type": "input",
+      "field": "name"
+    },
+    {
+      "label": "文档编号",
+      "rules": [
+        {
+          "type": "required"
+        }
+      ],
+      "props": {
+        "placeholder": "请输入"
+      },
+      "type": "input",
+      "field": "code"
+    },
+    {
+      "label": "描述",
+      "rules": [],
+      "props": {
+        "placeholder": "请输入"
+      },
+      "type": "input",
+      "field": "desc"
+    },
+    {
+      "label": "备注",
+      "rules": [],
+      "props": {
+        "placeholder": "请输入"
+      },
+      "type": "input",
+      "field": "note"
+    },
+    {
+      "label": "上传文件",
+      "rules": [
+        {
+          "type": "required"
+        }
+      ],
+      "field": "url",
+      "span": 8,
+      "type": "upload_file_single",
+      "options": {
+        "title": "点击上传",
+        "type": "string",
+        "API": "/api/fs/uploadfile"
+      },
+      "expect": {}
+    }
+  ],
+  "map": {},
+  "layout": {
+    "table": "Content",
+    "form": "TitleContent"
+  },
+  "tableActions": [
+    {
+      "title": "添加",
+      "type": "path",
+      "options": {
+        "outside": true,
+        "style": "primary",
+        "path": "fileManage/fileManage-add"
+      },
+      "expect": {
+        "permission": ""
+      }
+    }
+  ],
+  "tableOperation": [
+    {
+      "title": "详情",
+      "type": "path",
+      "options": {
+        "outside": true,
+        "path": "fileManage/fileManage-view"
+      }
+    },
+    {
+      "title": "编辑",
+      "type": "path",
+      "options": {
+        "outside": true,
+        "path": "fileManage/fileManage-edit"
+      }
+    },
+    {
+      "title": "删除",
+      "type": "delete",
+      "options": {
+        "outside": false
+      },
+      "expect": {
+        "permission": ""
+      }
+    }
+  ],
+  "searchFields": [
+    {
+      "label": "文档名",
+      "field": "name",
+      "type": "input",
+      "props": {
+        "placeholder": ""
+      }
+    }
+  ],
+  "tableFields": [
+    {
+      "label": "文档编号",
+      "field": "code"
+    },
+    {
+      "label": "文档名",
+      "field": "name"
+    },
+    {
+      "label": "描述",
+      "field": "desc"
+    },
+    {
+      "label": "创建时间",
+      "field": "createTime"
+    },
+    {
+      "label": "更新时间",
+      "field": "updateTime"
+    },
+    {
+      "label": "文件路径",
+      "field": "url"
+    },
+    {
+      "label": "备注",
+      "field": "note"
+    }
+  ],
+  "viewConfig": [
+    {
+      "title": "详情",
+      "type": "plain",
+      "fields": [
+        {
+          "label": "文档编号",
+          "field": "code"
+        },
+        {
+          "label": "文档名",
+          "field": "name"
+        },
+        {
+          "label": "描述",
+          "field": "desc"
+        },
+        {
+          "label": "创建时间",
+          "field": "createTime"
+        },
+        {
+          "label": "更新时间",
+          "field": "updateTime"
+        },
+        {
+          "label": "备注",
+          "field": "note"
+        },
+        {
+          "label": "文件路径",
+          "field": "url"
+        }
+      ]
+    },
+    {
+      "label": "文件预览",
+      "span": 10,
+      "type": "previewFile",
+      "field": "url"
+    }
+  ]
+}
