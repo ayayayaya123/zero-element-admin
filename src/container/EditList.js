@@ -1,7 +1,9 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { withRouter, history } from 'umi';
-import { Space, Button } from 'antd';
+// import { Space, Button } from 'antd';
+import { Drawer,Button } from 'antd';
 import switchEndpoint from '@/components/switchEndpoint';
+import './public/index.less'
 
 export default withRouter(function EditList(props) {
   const { namespace, location } = props;
@@ -22,12 +24,36 @@ export default withRouter(function EditList(props) {
     })
   }
 
-  return <Space>
-    <Button type="primary" onClick={handleClick.bind(null, '/pageManage/tableFields')}>编辑字段</Button>
-    <Button type="dashed" onClick={handleClick.bind(null, '/pageManage/tableAction')}>编辑 Action</Button>
-    <Button type="dashed" onClick={handleClick.bind(null, '/pageManage/tableOperation')}>编辑 Operation</Button>
-    <Button onClick={handleClick.bind(null, '/pageManage/createForm')}>编辑[新建]表单</Button>
-    <Button onClick={handleClick.bind(null, '/pageManage/editForm')}>编辑[编辑]表单</Button>
-  </Space>
+  const edit = <svg t="1619769852820" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4181" width="16" height="16"><path d="M746.929231 430.473846l-341.582769 329.176616a50.806154 50.806154 0 0 1-23.079385 12.72123L154.151385 830.227692a51.2 51.2 0 0 1-12.996923 1.575385 51.278769 51.278769 0 0 1-40.290462-19.022769 47.576615 47.576615 0 0 1-8.900923-42.417231L152.024615 550.596923c2.284308-8.467692 6.813538-16.147692 13.154462-22.252308l335.714461-323.426461 245.996308 225.555692z m64.196923-61.833846l-246.035692-225.516308L698.683077 14.375385c9.609846-9.216 22.449231-14.375385 35.997538-14.375385 13.508923 0 26.387692 5.159385 36.036923 14.375385l168.054154 161.870769c19.140923 18.156308 19.968 48.443077 1.732923 67.623384-0.551385 0.551385-1.102769 1.181538-1.732923 1.732924L811.126154 368.64z m142.178461 598.370462c0 27.175385-22.764308 49.073231-50.924307 49.07323H90.348308C62.188308 1016.123077 39.384615 994.146462 39.384615 967.010462c0-27.057231 22.764308-49.033846 50.924308-49.033847H902.301538c28.199385 0 50.963692 21.976615 50.963693 49.033847z" fill="#1296db" enableBackground="transparent" p-id="4182"></path></svg>
+  const editText = <svg t="1619770826354" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6591" width="18" height="18"><path d="M768 896H256c-70.4 0-128-57.6-128-128V256c0-70.4 57.6-128 128-128h512c70.4 0 128 57.6 128 128v512c0 70.4-57.6 128-128 128zM256 192c-35.2 0-64 28.8-64 64v512c0 35.2 28.8 64 64 64h512c35.2 0 64-28.8 64-64V256c0-35.2-28.8-64-64-64H256z m416 192h-320c-19.2 0-32-12.8-32-32s12.8-32 32-32h320c19.2 0 32 12.8 32 32s-12.8 32-32 32z m-320 32c-19.2 0-32-12.8-32-32v-32c0-19.2 12.8-32 32-32s32 12.8 32 32V384c0 19.2-12.8 32-32 32z m320 0c-19.2 0-32-12.8-32-32v-32c0-19.2 12.8-32 32-32s32 12.8 32 32V384c0 19.2-12.8 32-32 32zM512 704c-19.2 0-32-12.8-32-32v-320c0-19.2 12.8-32 32-32s32 12.8 32 32v320c0 19.2-12.8 32-32 32z m32 0h-64c-19.2 0-32-12.8-32-32s12.8-32 32-32h64c19.2 0 32 12.8 32 32s-12.8 32-32 32z" fill="#ffffff" enableBackground="#1296db" p-id="6592"></path></svg>
+  const listedit = <svg t="1619771230256" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7510" width="18" height="18"><path d="M288 693.333333a21.333333 21.333333 0 0 1 21.333333 21.333334v21.333333a21.333333 21.333333 0 0 1-21.333333 21.333333h-42.666667a21.333333 21.333333 0 0 1-21.333333-21.333333v-21.333333a21.333333 21.333333 0 0 1 21.333333-21.333334h42.666667z m490.666667 0a21.333333 21.333333 0 0 1 21.333333 21.333334v21.333333a21.333333 21.333333 0 0 1-21.333333 21.333333H394.666667a21.333333 21.333333 0 0 1-21.333334-21.333333v-21.333333a21.333333 21.333333 0 0 1 21.333334-21.333334h384zM288 480a21.333333 21.333333 0 0 1 21.333333 21.333333v21.333334a21.333333 21.333333 0 0 1-21.333333 21.333333h-42.666667a21.333333 21.333333 0 0 1-21.333333-21.333333v-21.333334a21.333333 21.333333 0 0 1 21.333333-21.333333h42.666667z m490.666667 0a21.333333 21.333333 0 0 1 21.333333 21.333333v21.333334a21.333333 21.333333 0 0 1-21.333333 21.333333H394.666667a21.333333 21.333333 0 0 1-21.333334-21.333333v-21.333334a21.333333 21.333333 0 0 1 21.333334-21.333333h384zM288 266.666667a21.333333 21.333333 0 0 1 21.333333 21.333333v21.333333a21.333333 21.333333 0 0 1-21.333333 21.333334h-42.666667a21.333333 21.333333 0 0 1-21.333333-21.333334v-21.333333a21.333333 21.333333 0 0 1 21.333333-21.333333h42.666667z m490.666667 0a21.333333 21.333333 0 0 1 21.333333 21.333333v21.333333a21.333333 21.333333 0 0 1-21.333333 21.333334H394.666667a21.333333 21.333333 0 0 1-21.333334-21.333334v-21.333333a21.333333 21.333333 0 0 1 21.333334-21.333333h384z" fill="#000" enableBackground="transparent" p-id="7511"></path></svg>
+  const editOperation = <svg t="1619773824028" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8266" width="18" height="18"><path d="M210.823529 512m-90.352941 0a90.352941 90.352941 0 1 0 180.705883 0 90.352941 90.352941 0 1 0-180.705883 0Z" fill="#2c2c2c" p-id="8267"></path><path d="M512 512m-90.352941 0a90.352941 90.352941 0 1 0 180.705882 0 90.352941 90.352941 0 1 0-180.705882 0Z" fill="#2c2c2c" p-id="8268"></path><path d="M813.176471 512m-90.352942 0a90.352941 90.352941 0 1 0 180.705883 0 90.352941 90.352941 0 1 0-180.705883 0Z" fill="#2c2c2c" p-id="8269"></path></svg>
+  const editNew = <svg t="1619774153787" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="10880" width="18" height="18"><path d="M800 960 224 960c-52.928 0-96-43.072-96-96L128 224c0-52.928 43.072-96 96-96l448 0c17.696 0 32 14.336 32 32s-14.304 32-32 32L224 192C206.368 192 192 206.368 192 224l0 640c0 17.664 14.368 32 32 32l576 0c17.664 0 32-14.336 32-32L832 352c0-17.664 14.304-32 32-32s32 14.336 32 32l0 512C896 916.928 852.928 960 800 960z" p-id="10881"></path><path d="M612 448c-8.192 0-16.384-3.136-22.624-9.376-12.512-12.512-12.512-32.736 0-45.248l318.016-318.016c12.512-12.512 32.736-12.512 45.248 0s12.512 32.736 0 45.248l-318.016 318.016C628.384 444.896 620.192 448 612 448z" p-id="10882"></path><path d="M480 448 288 448c-17.664 0-32-14.336-32-32s14.336-32 32-32l192 0c17.664 0 32 14.336 32 32S497.664 448 480 448z" p-id="10883"></path><path d="M672 640 288 640c-17.664 0-32-14.304-32-32s14.336-32 32-32l384 0c17.696 0 32 14.304 32 32S689.696 640 672 640z" p-id="10884"></path></svg>
+  const editEdit = <svg t="1619774230956" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="11273" width="14" height="14"><path d="M937.25000014 1002.70701059H86.74999986a70.87499986 70.87499986 0 0 1-70.87499987-70.87499986V81.33201044a70.87499986 70.87499986 0 0 1 70.87499987-70.87499986h283.50000042a70.87499986 70.87499986 0 0 1 0 141.74999973H157.62499972v708.75000055h708.75000056V577.45701045a70.87499986 70.87499986 0 0 1 141.74999971 0v354.37500028a70.87499986 70.87499986 0 0 1-70.87499985 70.87499986zM542.47625041 540.46026087a70.87499986 70.87499986 0 1 1-99.93375041-100.21725001L835.19000041 47.94988518a70.87499986 70.87499986 0 0 1 99.93374945 100.21725z" p-id="11274"></path></svg>
+  const [visible, setVisible] = useState(false);
+  const showDrawer = () => {
+    setVisible(true);
+  };
+  const onClose = () => {
+    setVisible(false);
+  };
+
+  return <div className="Drawer-edit-box">
+  <Button onClick={showDrawer} className="edit-box" icon={edit}>
+  </Button>
+  <Drawer
+    title = "编辑更多..."
+    placement = "right"
+    closable = {false}
+    onClose = {onClose}
+    visible = {visible}
+  >
+    <Button type="primary" onClick={handleClick.bind(null, '/pageManage/tableFields')} className="edit-all"><i class="edit-icon">{editText}</i>编辑字段</Button>
+    <Button type="dashed" onClick={handleClick.bind(null, '/pageManage/tableAction')} className="edit-all"><i class="edit-icon">{listedit}</i>编辑 Action</Button>
+    <Button type="dashed" onClick={handleClick.bind(null, '/pageManage/tableOperation')} className="edit-all"><i class="edit-icon">{editOperation}</i>编辑 Operation</Button>
+    <Button onClick={handleClick.bind(null, '/pageManage/createForm')} className="edit-all"><i class="edit-icon">{editNew}</i>编辑[新建]表单</Button>
+    <Button onClick={handleClick.bind(null, '/pageManage/editForm')} className="edit-all"><i class="edit-icon">{editEdit}</i>编辑[编辑]表单</Button>
+  </Drawer>
+  </div>
 }
 )
